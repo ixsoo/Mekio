@@ -225,7 +225,12 @@ function nav(id,el){
 }
 function category(n,i){document.getElementById('catName').textContent=n;document.getElementById('catIcon').textContent=i;document.getElementById('guide').classList.add('hidden');go('category')}
 function showGuide(n){
-  const g=document.getElementById('guide');g.innerHTML='<b>'+n+'</b><p class="meta">Här visas rätt delar, verktyg, moment, tidsåtgång och tydliga steg för just din bil.</p><button class="primary full" onclick="go(\\'garage\\')">Starta Garageläge</button>';g.classList.remove('hidden')
+  const g=document.getElementById('guide');
+  g.innerHTML = `<b>${n}</b>
+    <p class="meta">Här visas rätt delar, verktyg, moment, tidsåtgång och tydliga steg för just din bil.</p>
+    <button id="startGarageBtn" class="primary full">Starta Garageläge</button>`;
+  g.classList.remove('hidden');
+  document.getElementById('startGarageBtn').addEventListener('click', () => go('garage'));
 }
 function addLife(){
   const d=document.createElement('div');d.className='card event';d.innerHTML='<b>✅ Ny servicepost</b><div class="meta">Tillagd nyss • Demodata</div>';document.getElementById('timeline').prepend(d);toast('Serviceposten har lagts till.')
@@ -241,9 +246,16 @@ function toggleFlash(){
   const b=document.getElementById('flash');b.classList.toggle('on');
   toast(b.classList.contains('on')?'Ficklampan är på i prototypen.':'Ficklampan är av.')
 }
-setTimeout(()=>document.getElementById('splash').classList.add('hide'),1250);
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    const splash = document.getElementById('splash');
+    if (splash) splash.classList.add('hide');
+  }, 1100);
+});
 refresh();
-if('serviceWorker' in navigator){navigator.serviceWorker.register('./sw.js').catch(()=>{})}
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('./sw.js').then(reg => reg.update()).catch(() => {});
+}
 </script>
 </body>
 </html>
