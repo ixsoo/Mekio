@@ -9,41 +9,55 @@
 <meta name="apple-mobile-web-app-title" content="Mekio">
 <link rel="apple-touch-icon" href="icon-192.png">
 <link rel="manifest" href="manifest.webmanifest">
-<title>Mekio</title>
+<title>Mekio Beta v0.3</title>
 <style>
-:root{--bg:#f4f6f5;--card:#fff;--ink:#101615;--muted:#69736f;--green:#1d9b75;--green2:#27c99a;--dark:#0d1211;--line:#e2e8e5;--warn:#f3b63e}
+:root{
+  --bg:#f3f6f5;--card:#fff;--ink:#111816;--muted:#69746f;
+  --green:#1d9b75;--green2:#27c99a;--dark:#0d1211;--line:#e3e9e6;
+  --gold:#f4bf32;--danger:#df655d
+}
 *{box-sizing:border-box}
 html,body{margin:0;min-height:100%;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink)}
 button,input,textarea{font:inherit}
 button{cursor:pointer}
 .app{max-width:470px;min-height:100vh;margin:auto;background:var(--bg);position:relative;overflow:hidden}
+.view{display:none;min-height:100vh;padding:calc(18px + env(safe-area-inset-top)) 16px calc(104px + env(safe-area-inset-bottom));animation:slideIn .32s ease}
+.view.active{display:block}
+@keyframes slideIn{from{opacity:0;transform:translateX(18px)}to{opacity:1;transform:none}}
 .splash{position:fixed;inset:0;background:var(--dark);display:grid;place-items:center;z-index:100;transition:.45s}
 .splash.hide{opacity:0;visibility:hidden}
 .smark{width:118px;height:118px;border-radius:30px;background:#111a18;display:grid;place-items:center;color:var(--green2);font-size:68px;font-weight:900;box-shadow:0 0 46px rgba(39,201,154,.22)}
-.splash p{color:#e6eeeb;text-align:center;margin-top:18px;letter-spacing:.3px}
-.view{display:none;min-height:100vh;padding:18px 16px 102px;animation:in .34s ease}
-.view.active{display:block}
-@keyframes in{from{opacity:0;transform:translateX(18px)}to{opacity:1;transform:none}}
-.brandbar{display:flex;align-items:center;justify-content:space-between;padding:6px 2px 18px}
-.miniM{width:38px;height:38px;border-radius:12px;background:var(--dark);color:var(--green2);display:grid;place-items:center;font-weight:900;font-size:24px}
-.brandtitle{font-size:23px;font-weight:850;letter-spacing:-.5px}
+.splash p{color:#e6eeeb;text-align:center;margin-top:18px;line-height:1.45}
+.brandbar{display:flex;align-items:center;justify-content:space-between;padding:4px 2px 18px}
+.brand-left{display:flex;align-items:center;gap:10px}
+.miniM{width:34px;height:34px;border-radius:11px;background:var(--dark);color:var(--green2);display:grid;place-items:center;font-weight:900;font-size:21px;border:0}
+.title{font-size:23px;font-weight:850;letter-spacing:-.5px}
 .tag{color:var(--muted);font-size:13px}
-.hero{background:linear-gradient(145deg,#0e1815,#183b32);color:white;border-radius:26px;padding:26px 20px;box-shadow:0 18px 45px rgba(13,35,30,.18)}
-.hero h1{font-size:31px;line-height:1.05;margin:0 0 10px}
-.hero p{opacity:.78;line-height:1.5;margin:0}
+.back{border:0;background:transparent;color:var(--green);font-weight:800;padding:8px 2px}
+.home-center{min-height:calc(100vh - 126px);display:flex;flex-direction:column;justify-content:center;transform:translateY(-3vh)}
+.hero{background:linear-gradient(145deg,#0e1815,#183b32);color:white;border-radius:26px;padding:27px 20px;box-shadow:0 18px 45px rgba(13,35,30,.18)}
+.hero h1{font-size:31px;line-height:1.06;margin:0 0 10px}
+.hero p{opacity:.80;line-height:1.5;margin:0}
 .searchbox{background:white;border-radius:18px;padding:7px;display:flex;gap:8px;margin-top:22px}
 .searchbox input{border:0;outline:0;min-width:0;flex:1;padding:14px 11px;font-size:20px;font-weight:800;text-transform:uppercase}
 .primary{border:0;background:var(--green);color:white;border-radius:14px;padding:14px 17px;font-weight:800}
+.secondary{border:0;background:#e9f7f2;color:#13694f;border-radius:13px;padding:11px 13px;font-weight:800}
 .counter{color:#c7d8d2;font-size:12px;margin:10px 3px 0}
 .section{margin:20px 2px 10px;display:flex;align-items:center;justify-content:space-between}
 .section h3{margin:0;font-size:17px}
 .card{background:var(--card);border:1px solid #edf1ef;border-radius:21px;padding:17px;margin-bottom:13px;box-shadow:0 5px 18px rgba(20,39,33,.055)}
+.saved-card{display:flex;align-items:center;gap:12px;width:100%;text-align:left;border:0}
+.car-dot{width:46px;height:46px;border-radius:15px;background:#e9f7f2;display:grid;place-items:center;font-size:24px}
+.saved-text{flex:1}.saved-text b{display:block}.saved-text small{color:var(--muted)}
+.chev{font-size:22px;color:var(--muted)}
 .carhead{display:flex;gap:13px;align-items:flex-start}
 .carinfo{flex:1}
 .carinfo h2{font-size:25px;margin:5px 0 4px}
 .reg{display:inline-block;background:#e9f7f2;color:#13694f;border-radius:999px;padding:6px 10px;font-size:12px;font-weight:850}
 .star{border:0;background:#f1f4f2;width:48px;height:48px;border-radius:15px;font-size:27px;transition:.2s}
-.star.on{transform:scale(1.08);background:#fff5d9}
+.star.on{background:#fff5d9}
+.star.pop{animation:pop .38s ease}
+@keyframes pop{0%{transform:scale(1)}45%{transform:scale(1.38) rotate(-8deg)}100%{transform:scale(1)}}
 .stats{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:15px}
 .stat{background:#f5f7f6;border-radius:15px;padding:12px}
 .stat small{color:var(--muted);display:block;margin-bottom:4px}
@@ -55,59 +69,106 @@ button{cursor:pointer}
 .nav{border:0;background:transparent;color:var(--muted);padding:6px 2px;font-size:10px;border-radius:12px}.nav span{display:block;font-size:21px;margin-bottom:2px}.nav.active{color:var(--green);background:#ebf7f3}
 .toast{position:fixed;z-index:80;left:50%;bottom:92px;transform:translate(-50%,30px);width:calc(100% - 36px);max-width:430px;background:var(--green);color:white;border-radius:15px;padding:14px 15px;font-weight:750;opacity:0;pointer-events:none;transition:.3s}
 .toast.show{opacity:1;transform:translate(-50%,0)}
-.back{border:0;background:transparent;color:var(--green);padding:4px 0 14px;font-weight:750}
+.overlay{position:fixed;inset:0;background:rgba(13,18,17,.92);z-index:90;display:none;place-items:center;color:white;padding:24px;text-align:center}
+.overlay.show{display:grid}
+.loader{width:44px;height:44px;border:4px solid rgba(255,255,255,.22);border-top-color:var(--green2);border-radius:50%;animation:spin .8s linear infinite;margin:auto}
+@keyframes spin{to{transform:rotate(360deg)}}
+.found{font-size:56px;margin-bottom:12px}.foundTitle{font-size:28px;font-weight:850;margin:0}
 .timeline{border-left:3px solid #d7eae3;margin-left:8px;padding-left:17px}
 .event{position:relative}.event:before{content:"";position:absolute;width:11px;height:11px;background:var(--green);border:3px solid var(--bg);border-radius:50%;left:-25px;top:20px}
 .meta{color:var(--muted);font-size:12px;line-height:1.5}
-.secondary{border:0;background:#e9f7f2;color:#13694f;border-radius:13px;padding:11px 13px;font-weight:800}
 .full{width:100%}
 .garage{background:#090d0c;color:#f4f7f5}
 .garage .card{background:#111816;border-color:#23302c;color:white}
 .garage .meta{color:#aab6b2}
+.garage-wrap{min-height:calc(100vh - 116px);display:flex;flex-direction:column;justify-content:center}
 .gstep{font-size:28px;line-height:1.2;margin:10px 0 20px}
 .gtools{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .gbtn{border:1px solid #31423d;background:#18221f;color:white;border-radius:17px;padding:17px 8px;font-weight:800}
 .flash.on{background:#f3b63e;color:#17120a}
-input.field,textarea.field{width:100%;border:1px solid var(--line);border-radius:14px;padding:13px;background:white;outline:none}
-textarea.field{min-height:95px;resize:none}
+textarea.field{width:100%;border:1px solid var(--line);border-radius:14px;padding:13px;background:white;outline:none;min-height:95px;resize:none}
 .hidden{display:none!important}
 .note{background:#fff4d8;border-radius:15px;padding:13px;font-size:13px;line-height:1.45}
+.tip{background:linear-gradient(135deg,#e8f8f2,#f7fffc);border:1px solid #d2eee4;border-radius:18px;padding:15px;margin-top:14px}
+.tip b{color:#116c51}
 </style>
 </head>
 <body>
-<div class="splash" id="splash"><div><div class="smark">M</div><p><b>MEKIO</b><br>Din mekaniker i fickan.</p></div></div>
+<div class="splash" id="splash">
+  <div>
+    <div class="smark">M</div>
+    <p><b>MEKIO</b><br>Din mekaniker i fickan.</p>
+  </div>
+</div>
+
+<div class="overlay" id="searchOverlay">
+  <div id="searching">
+    <div class="loader"></div>
+    <h2>Söker registreringsnummer...</h2>
+    <p style="opacity:.7">Hämtar bilinformation</p>
+  </div>
+  <div id="found" class="hidden">
+    <div class="found" id="foundIcon">🚗</div>
+    <p class="foundTitle" id="foundTitle">Volvo 240 hittad</p>
+    <p style="opacity:.72">Din bil är redo</p>
+  </div>
+</div>
+
 <div class="app">
   <section id="search" class="view active">
-    <div class="brandbar"><div><div class="brandtitle">MEKIO</div><div class="tag">Din mekaniker i fickan.</div></div><div class="miniM">M</div></div>
-    <div class="hero">
-      <h1>Allt om bilen.<br>Utan att googla.</h1>
-      <p>Sök registreringsnummer och få en enkel översikt, bilens historia och hjälp när du vill skruva själv.</p>
-      <div class="searchbox"><input id="reg" maxlength="7" placeholder="ABC123"><button class="primary" onclick="searchCar()">Sök</button></div>
-      <div class="counter" id="counter">10 kostnadsfria sökningar kvar</div>
+    <div class="brandbar">
+      <div><div class="title">MEKIO</div><div class="tag">Din mekaniker i fickan.</div></div>
+      <div class="miniM">M</div>
     </div>
-    <div id="savedSection" class="hidden">
-      <div class="section"><h3>⭐ Mina bilar</h3></div>
-      <button class="card full" style="text-align:left" onclick="openCar()"><b>🚙 Volvo 240 GL</b><div class="meta" id="savedReg">ABC123 • 1990 • B230F</div></button>
+    <div class="home-center">
+      <div class="hero">
+        <h1>Allt om bilen.<br>Utan att googla.</h1>
+        <p>Sök registreringsnummer och få en enkel översikt, bilens historia och hjälp när du vill skruva själv.</p>
+        <div class="searchbox">
+          <input id="reg" maxlength="7" placeholder="ABC123">
+          <button class="primary" onclick="searchCar()">Sök</button>
+        </div>
+        <div class="counter" id="counter">10 kostnadsfria sökningar kvar</div>
+      </div>
+
+      <div id="welcome" class="hidden">
+        <div class="section"><h3>👋 Välkommen tillbaka, Mikael</h3></div>
+        <div id="savedList"></div>
+      </div>
+
+      <div class="tip">
+        <b>💚 Mekio-tips</b>
+        <div class="meta" style="margin-top:4px">Spara bilen med ⭐ så ligger den färdig här nästa gång du öppnar appen.</div>
+      </div>
     </div>
   </section>
 
   <section id="car" class="view">
-    <div class="brandbar"><button class="miniM" onclick="go('search')" style="border:0">M</button><div class="tag">Bilprofil</div></div>
+    <div class="brandbar">
+      <div class="brand-left"><button class="back" onclick="goBack()">←</button><button class="miniM" onclick="go('search')">M</button></div>
+      <div class="tag">Bilprofil</div>
+    </div>
     <div class="card">
       <div class="carhead">
-        <div class="carinfo"><span class="reg" id="regBadge">ABC123</span><h2>Volvo 240 GL</h2><div class="meta">1990 • B230F • Bensin • Manuell</div></div>
+        <div class="carinfo">
+          <span class="reg" id="regBadge">OKS195</span>
+          <h2 id="carTitle">Din Volvo 240</h2>
+          <div class="meta" id="carMeta">1990 • B230F • Bensin • Manuell</div>
+        </div>
         <button id="star" class="star" onclick="favorite()">☆</button>
       </div>
       <div class="stats">
-        <div class="stat"><small>Motorolja</small><b>3,85 liter</b></div>
-        <div class="stat"><small>Oljetyp</small><b>5W-40</b></div>
-        <div class="stat"><small>Hjul</small><b>185/65 R15</b></div>
-        <div class="stat"><small>Bultmönster</small><b>5×108</b></div>
-        <div class="stat"><small>Växellåda</small><b>M45</b></div>
-        <div class="stat"><small>Nästa besiktning</small><b>26 aug 2026</b></div>
+        <div class="stat"><small>Motorolja</small><b id="oilAmount">3,85 liter</b></div>
+        <div class="stat"><small>Oljetyp</small><b id="oilType">5W-40</b></div>
+        <div class="stat"><small>Hjul</small><b id="wheel">185/65 R15</b></div>
+        <div class="stat"><small>Bultmönster</small><b id="bolt">5×108</b></div>
+        <div class="stat"><small>Växellåda</small><b id="gearbox">M45</b></div>
+        <div class="stat"><small>Nästa besiktning</small><b id="inspection">26 aug 2026</b></div>
       </div>
     </div>
-    <div class="note">⏰ Oljan registrerades bytt för 1 180 mil sedan.</div>
+
+    <div class="note">⏰ <span id="serviceNote">Oljan registrerades bytt för 1 180 mil sedan.</span></div>
+
     <div class="section"><h3>Kategorier</h3></div>
     <div class="grid">
       <button class="tile" onclick="category('Motor','🛢️')"><span>🛢️</span><b>Motor</b></button>
@@ -120,8 +181,15 @@ textarea.field{min-height:95px;resize:none}
   </section>
 
   <section id="category" class="view">
-    <button class="back" onclick="go('car')">← Bilprofil</button>
-    <div class="card"><div style="font-size:38px" id="catIcon">🛢️</div><h2 id="catName">Motor</h2><div class="meta">Anpassat för Volvo 240 GL 1990, B230F.</div></div>
+    <div class="brandbar">
+      <div class="brand-left"><button class="back" onclick="goBack()">← Tillbaka</button></div>
+      <div class="miniM">M</div>
+    </div>
+    <div class="card">
+      <div style="font-size:38px" id="catIcon">🛢️</div>
+      <h2 id="catName">Motor</h2>
+      <div class="meta" id="categoryCar">Anpassat för din bil.</div>
+    </div>
     <div class="grid">
       <button class="tile" onclick="showGuide('Service & vätskor')"><span>🧴</span><b>Service & vätskor</b></button>
       <button class="tile" onclick="showGuide('Delar som passar')"><span>📦</span><b>Delar som passar</b></button>
@@ -132,7 +200,10 @@ textarea.field{min-height:95px;resize:none}
   </section>
 
   <section id="life" class="view">
-    <div class="brandbar"><div class="miniM">M</div><button class="secondary" onclick="addLife()">+ Lägg till</button></div>
+    <div class="brandbar">
+      <div class="brand-left"><button class="back" onclick="goBack()">←</button><div class="miniM">M</div></div>
+      <button class="secondary" onclick="addLife()">+ Lägg till</button>
+    </div>
     <h2>Bilens liv</h2>
     <div class="timeline" id="timeline">
       <div class="card event"><b>✅ Oljebyte</b><div class="meta">13 juni 2026 • 248 632 km<br>Castrol Edge 5W-40 • Bosch oljefilter</div></div>
@@ -142,7 +213,10 @@ textarea.field{min-height:95px;resize:none}
   </section>
 
   <section id="docs" class="view">
-    <div class="brandbar"><div class="miniM">M</div><button class="secondary" onclick="uploadDoc()">+ Lägg till</button></div>
+    <div class="brandbar">
+      <div class="brand-left"><button class="back" onclick="goBack()">←</button><div class="miniM">M</div></div>
+      <button class="secondary" onclick="uploadDoc()">+ Lägg till</button>
+    </div>
     <h2>Dokument</h2>
     <button class="card full" onclick="uploadDoc()"><div style="font-size:29px">📷</div><b>Fotografera eller ladda upp</b><div class="meta">Besiktningsprotokoll, kvitto eller garanti.</div></button>
     <div id="docList">
@@ -152,7 +226,10 @@ textarea.field{min-height:95px;resize:none}
   </section>
 
   <section id="ai" class="view">
-    <div class="brandbar"><div class="miniM">M</div><div class="tag">AI-mekaniker</div></div>
+    <div class="brandbar">
+      <div class="brand-left"><button class="back" onclick="goBack()">←</button><div class="miniM">M</div></div>
+      <div class="tag">AI-mekaniker</div>
+    </div>
     <div class="card">
       <h2>Vad är problemet?</h2>
       <textarea id="question" class="field" placeholder="Exempel: Det knackar fram när jag kör över gupp"></textarea>
@@ -162,99 +239,245 @@ textarea.field{min-height:95px;resize:none}
   </section>
 
   <section id="garage" class="view garage">
-    <div class="brandbar"><div class="miniM">M</div><div class="tag">Garageläge</div></div>
-    <div class="card">
-      <div class="meta">BYTA BROMSBELÄGG FRAM • STEG 3 AV 8</div>
-      <div class="gstep">Lossa bromsokets glidbultar och häng upp oket. Låt det aldrig hänga i bromsslangen.</div>
-      <div class="gtools">
-        <button id="flash" class="gbtn flash" onclick="toggleFlash()">🔦 Ficklampa</button>
-        <button class="gbtn" onclick="toast('Skärmen hålls tänd i den riktiga appen.')">☀️ Håll skärmen tänd</button>
-        <button class="gbtn" onclick="toast('Bild sparad till servicejobbet.')">📷 Ta bild</button>
-        <button class="gbtn" onclick="toast('Jobbet pausat.')">⏸ Pausa</button>
+    <div class="garage-wrap">
+      <div class="brandbar">
+        <div class="brand-left"><button class="back" onclick="goBack()" style="color:#65d7b4">← Tillbaka</button><div class="miniM">M</div></div>
+        <div class="tag" id="garageCar">Din bil</div>
       </div>
-      <button class="primary full" style="margin-top:15px" onclick="toast('Nästa steg visas.')">Nästa steg →</button>
+      <div class="card">
+        <div class="meta">BYTA BROMSBELÄGG FRAM • STEG 3 AV 8</div>
+        <div class="gstep">Lossa bromsokets glidbultar och häng upp oket. Låt det aldrig hänga i bromsslangen.</div>
+        <div class="gtools">
+          <button id="flash" class="gbtn flash" onclick="toggleFlash()">🔦 Ficklampa</button>
+          <button class="gbtn" onclick="toast('Skärmen hålls tänd i den riktiga appen.')">☀️ Håll skärmen tänd</button>
+          <button class="gbtn" onclick="toast('Bild sparad till servicejobbet.')">📷 Ta bild</button>
+          <button class="gbtn" onclick="toast('Jobbet pausat.')">⏸ Pausa</button>
+        </div>
+        <button class="primary full" style="margin-top:15px" onclick="toast('Nästa steg visas.')">Nästa steg →</button>
+      </div>
     </div>
   </section>
 
   <nav id="nav" class="bottom hidden">
-    <button class="nav active" onclick="nav('car',this)"><span>🚗</span>Bil</button>
-    <button class="nav" onclick="nav('life',this)"><span>📖</span>Bilens liv</button>
-    <button class="nav" onclick="nav('docs',this)"><span>📂</span>Dokument</button>
-    <button class="nav" onclick="nav('ai',this)"><span>🤖</span>Mekaniker</button>
+    <button class="nav active" data-view="car" onclick="navTo('car',this)"><span>🚗</span>Bil</button>
+    <button class="nav" data-view="life" onclick="navTo('life',this)"><span>📖</span>Bilens liv</button>
+    <button class="nav" data-view="docs" onclick="navTo('docs',this)"><span>📂</span>Dokument</button>
+    <button class="nav" data-view="ai" onclick="navTo('ai',this)"><span>🤖</span>Mekaniker</button>
   </nav>
   <div id="toast" class="toast"></div>
 </div>
-<script>
-let searches=Number(localStorage.getItem('mekioSearches')||0);
-let fav=localStorage.getItem('mekioFav')==='1';
-let currentReg=localStorage.getItem('mekioReg')||'ABC123';
-const views=[...document.querySelectorAll('.view')];
 
-function go(id){
+<script>
+const cars = {
+  OKS195: {
+    reg:'OKS195', name:'Volvo 240', title:'Din Volvo 240', icon:'🚗',
+    meta:'1990 • B230F • Bensin • Manuell',
+    oilAmount:'3,85 liter', oilType:'5W-40', wheel:'185/65 R15',
+    bolt:'5×108', gearbox:'M45', inspection:'26 aug 2026',
+    note:'Oljan registrerades bytt för 1 180 mil sedan.'
+  },
+  JXD416: {
+    reg:'JXD416', name:'Volvo V90', title:'Din Volvo V90', icon:'🚙',
+    meta:'2017 • Diesel • Automat',
+    oilAmount:'5,2 liter', oilType:'0W-30', wheel:'225/50 R17',
+    bolt:'5×108', gearbox:'Geartronic', inspection:'14 feb 2027',
+    note:'Nästa serviceintervall visas här när det har registrerats.'
+  }
+};
+
+let currentCar = cars[localStorage.getItem('mekioCurrentCar')] || cars.OKS195;
+let searches = Number(localStorage.getItem('mekioSearchesV03') || 0);
+let favorites = JSON.parse(localStorage.getItem('mekioFavoritesV03') || '[]');
+let historyStack = ['search'];
+
+const views = [...document.querySelectorAll('.view')];
+
+function currentView(){
+  const active=document.querySelector('.view.active');
+  return active ? active.id : 'search';
+}
+
+function setView(id, push=true){
+  const old=currentView();
+  if(push && old!==id) historyStack.push(id);
   views.forEach(v=>v.classList.remove('active'));
   document.getElementById(id).classList.add('active');
-  document.getElementById('nav').classList.toggle('hidden',id==='search'||id==='category'||id==='garage');
+  document.getElementById('nav').classList.toggle('hidden', id==='search'||id==='category'||id==='garage');
+  document.querySelectorAll('.nav').forEach(n=>n.classList.toggle('active',n.dataset.view===id));
   window.scrollTo({top:0,behavior:'smooth'});
 }
+
+function go(id){ setView(id,true); }
+
+function goBack(){
+  if(historyStack.length>1) historyStack.pop();
+  const target=historyStack[historyStack.length-1] || 'search';
+  setView(target,false);
+}
+
+function navTo(id,el){ setView(id,true); }
+
 function searchCar(){
-  const r=(document.getElementById('reg').value.trim()||'ABC123').toUpperCase();
-  currentReg=r; localStorage.setItem('mekioReg',r);
+  const reg=(document.getElementById('reg').value.trim()||'OKS195').toUpperCase();
+  currentCar = cars[reg] || {
+    reg, name:'Demobil', title:'Demobil', icon:'🚘',
+    meta:'Testdata • Fordonsdata kopplas in i v0.4',
+    oilAmount:'Ej tillgängligt', oilType:'Ej tillgängligt',
+    wheel:'Ej tillgängligt', bolt:'Ej tillgängligt',
+    gearbox:'Ej tillgängligt', inspection:'Ej tillgängligt',
+    note:'Riktig registerinformation kommer i v0.4.'
+  };
+  localStorage.setItem('mekioCurrentCar', currentCar.reg);
   if(searches<10) searches++;
-  localStorage.setItem('mekioSearches',searches);
-  refresh(); setTimeout(()=>openCar(),420);
+  localStorage.setItem('mekioSearchesV03',searches);
+  refresh();
+
+  const overlay=document.getElementById('searchOverlay');
+  const searching=document.getElementById('searching');
+  const found=document.getElementById('found');
+  searching.classList.remove('hidden');
+  found.classList.add('hidden');
+  overlay.classList.add('show');
+
+  setTimeout(()=>{
+    searching.classList.add('hidden');
+    document.getElementById('foundIcon').textContent=currentCar.icon;
+    document.getElementById('foundTitle').textContent=currentCar.name+' hittad';
+    found.classList.remove('hidden');
+  },700);
+
+  setTimeout(()=>{
+    overlay.classList.remove('show');
+    historyStack=['search','car'];
+    setView('car',false);
+  },1450);
 }
-function openCar(){refresh();go('car')}
+
 function refresh(){
-  document.getElementById('regBadge').textContent=currentReg;
-  document.getElementById('savedReg').textContent=currentReg+' • 1990 • B230F';
-  document.getElementById('star').textContent=fav?'⭐':'☆';
-  document.getElementById('star').classList.toggle('on',fav);
-  document.getElementById('savedSection').classList.toggle('hidden',!fav);
   document.getElementById('counter').textContent=Math.max(0,10-searches)+' kostnadsfria sökningar kvar';
+  document.getElementById('regBadge').textContent=currentCar.reg;
+  document.getElementById('carTitle').textContent=currentCar.title;
+  document.getElementById('carMeta').textContent=currentCar.meta;
+  document.getElementById('oilAmount').textContent=currentCar.oilAmount;
+  document.getElementById('oilType').textContent=currentCar.oilType;
+  document.getElementById('wheel').textContent=currentCar.wheel;
+  document.getElementById('bolt').textContent=currentCar.bolt;
+  document.getElementById('gearbox').textContent=currentCar.gearbox;
+  document.getElementById('inspection').textContent=currentCar.inspection;
+  document.getElementById('serviceNote').textContent=currentCar.note;
+  document.getElementById('categoryCar').textContent='Anpassat för '+currentCar.title.toLowerCase()+'.';
+  document.getElementById('garageCar').textContent=currentCar.name;
+
+  const isFav=favorites.includes(currentCar.reg);
+  const star=document.getElementById('star');
+  star.textContent=isFav?'⭐':'☆';
+  star.classList.toggle('on',isFav);
+
+  renderSaved();
 }
+
 function favorite(){
-  fav=!fav;localStorage.setItem('mekioFav',fav?'1':'0');refresh();
-  toast(fav?'Volvo 240 GL har lagts till i Mina bilar.':'Volvo 240 GL har tagits bort från Mina bilar.');
+  const idx=favorites.indexOf(currentCar.reg);
+  const added=idx===-1;
+  if(added) favorites.push(currentCar.reg); else favorites.splice(idx,1);
+  localStorage.setItem('mekioFavoritesV03',JSON.stringify(favorites));
+  const star=document.getElementById('star');
+  star.classList.remove('pop');
+  void star.offsetWidth;
+  star.classList.add('pop');
+  refresh();
+  toast(added ? currentCar.name+' har lagts till i Mina bilar.' : currentCar.name+' har tagits bort från Mina bilar.');
 }
+
+function renderSaved(){
+  const wrap=document.getElementById('welcome');
+  const list=document.getElementById('savedList');
+  wrap.classList.toggle('hidden',favorites.length===0);
+  list.innerHTML='';
+  favorites.forEach(reg=>{
+    const car=cars[reg] || {reg,name:'Sparad bil',icon:'🚘',meta:'Demodata'};
+    const b=document.createElement('button');
+    b.className='card saved-card';
+    b.innerHTML=`<div class="car-dot">${car.icon}</div><div class="saved-text"><b>${car.name}</b><small>${car.reg} • Senast öppnad nyligen</small></div><div class="chev">›</div>`;
+    b.addEventListener('click',()=>{
+      currentCar=car;
+      localStorage.setItem('mekioCurrentCar',currentCar.reg);
+      refresh();
+      historyStack=['search','car'];
+      setView('car',false);
+    });
+    list.appendChild(b);
+  });
+}
+
 function toast(msg){
-  const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');
-  clearTimeout(window.tt);window.tt=setTimeout(()=>t.classList.remove('show'),2300);
+  const t=document.getElementById('toast');
+  t.textContent=msg;t.classList.add('show');
+  clearTimeout(window.toastTimer);
+  window.toastTimer=setTimeout(()=>t.classList.remove('show'),2300);
 }
-function nav(id,el){
-  document.querySelectorAll('.nav').forEach(n=>n.classList.remove('active'));el.classList.add('active');go(id)
+
+function category(name,icon){
+  document.getElementById('catName').textContent=name;
+  document.getElementById('catIcon').textContent=icon;
+  document.getElementById('guide').classList.add('hidden');
+  setView('category',true);
 }
-function category(n,i){document.getElementById('catName').textContent=n;document.getElementById('catIcon').textContent=i;document.getElementById('guide').classList.add('hidden');go('category')}
-function showGuide(n){
+
+function showGuide(name){
   const g=document.getElementById('guide');
-  g.innerHTML = `<b>${n}</b>
+  g.innerHTML=`<b>${name}</b>
     <p class="meta">Här visas rätt delar, verktyg, moment, tidsåtgång och tydliga steg för just din bil.</p>
-    <button id="startGarageBtn" class="primary full">Starta Garageläge</button>`;
+    <button id="garageButton" class="primary full">Starta Garageläge</button>`;
   g.classList.remove('hidden');
-  document.getElementById('startGarageBtn').addEventListener('click', () => go('garage'));
+  document.getElementById('garageButton').addEventListener('click',()=>setView('garage',true));
 }
+
 function addLife(){
-  const d=document.createElement('div');d.className='card event';d.innerHTML='<b>✅ Ny servicepost</b><div class="meta">Tillagd nyss • Demodata</div>';document.getElementById('timeline').prepend(d);toast('Serviceposten har lagts till.')
+  const d=document.createElement('div');
+  d.className='card event';
+  d.innerHTML='<b>✅ Ny servicepost</b><div class="meta">Tillagd nyss • Demodata</div>';
+  document.getElementById('timeline').prepend(d);
+  toast('Serviceposten har lagts till.');
 }
+
 function uploadDoc(){
-  const d=document.createElement('div');d.className='card';d.innerHTML='<b>📄 Nytt dokument</b><div class="meta">Uppladdat nyss • Demodata</div>';document.getElementById('docList').prepend(d);toast('Dokumentet har lagts till.')
+  const d=document.createElement('div');
+  d.className='card';
+  d.innerHTML='<b>📄 Nytt dokument</b><div class="meta">Uppladdat nyss • Demodata</div>';
+  document.getElementById('docList').prepend(d);
+  toast('Dokumentet har lagts till.');
 }
+
 function ask(){
-  const q=document.getElementById('question').value.trim();if(!q){toast('Beskriv problemet först.');return}
-  const a=document.getElementById('answer');a.innerHTML='<b>Första bedömning</b><p>På en Volvo 240 kan detta bland annat bero på bussningar, krängningshämmarstag eller glapp i framvagnen.</p><div class="meta">Hörs ljudet mest på höger eller vänster sida? Kommer det även när du svänger?</div>';a.classList.remove('hidden')
+  const q=document.getElementById('question').value.trim();
+  if(!q){toast('Beskriv problemet först.');return}
+  const a=document.getElementById('answer');
+  a.innerHTML=`<b>Första bedömning för ${currentCar.name}</b>
+    <p>Det kan bland annat bero på bussningar, krängningshämmarstag eller glapp i framvagnen.</p>
+    <div class="meta">Hörs ljudet mest på höger eller vänster sida? Kommer det även när du svänger?</div>`;
+  a.classList.remove('hidden');
 }
+
 function toggleFlash(){
-  const b=document.getElementById('flash');b.classList.toggle('on');
-  toast(b.classList.contains('on')?'Ficklampan är på i prototypen.':'Ficklampan är av.')
+  const b=document.getElementById('flash');
+  b.classList.toggle('on');
+  toast(b.classList.contains('on')?'Ficklampan är på i prototypen.':'Ficklampan är av.');
 }
-window.addEventListener('load', () => {
-  setTimeout(() => {
-    const splash = document.getElementById('splash');
-    if (splash) splash.classList.add('hide');
-  }, 1100);
+
+document.getElementById('reg').addEventListener('keydown',e=>{if(e.key==='Enter')searchCar()});
+
+window.addEventListener('load',()=>{
+  setTimeout(()=>{
+    const splash=document.getElementById('splash');
+    if(splash) splash.classList.add('hide');
+  },1100);
 });
+
 refresh();
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('./sw.js').then(reg => reg.update()).catch(() => {});
+
+if('serviceWorker' in navigator){
+  navigator.serviceWorker.register('./sw.js').then(reg=>reg.update()).catch(()=>{});
 }
 </script>
 </body>
