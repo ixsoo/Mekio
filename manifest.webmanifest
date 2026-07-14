@@ -1,11 +1,11 @@
 {
-  "name": "Mekio Beta",
+  "name": "Mekio",
   "short_name": "Mekio",
   "description": "Din mekaniker i fickan.",
   "start_url": "./",
   "display": "standalone",
   "background_color": "#0d1211",
-  "theme_color": "#0d1211",
+  "theme_color": "#f3f6f5",
   "icons": [
     {
       "src": "icon-192.png",

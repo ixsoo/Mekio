@@ -1,18 +1,17 @@
-MEKIO BETA v0.3
+MEKIO v4A
 
 NYTT:
-- Mer centrerad startsida
-- Tillbaka-knappar på undersidor
-- OKS195 visar Volvo 240
-- JXD416 visar Volvo V90
-- Sök-animation: “Volvo 240 hittad” / “Volvo V90 hittad”
-- Favoritstjärna med pop-animation
-- Gröna bekräftelser
-- “Välkommen tillbaka, Mikael”
-- Sparade bilar visas som kort
-- Garageläget centrerat bättre
-- Ny Mekio-tip-ruta som liten överraskning
-- Ny cacheversion så uppdateringen laddas in
+- Ny premiumdesign
+- Mitt garage
+- Rekommenderade jobb
+- Vanliga jobb
+- Jobbcenter med Delar, Verktyg, Moment och Viktigt
+- Fungerande steg-för-steg-guide med Föregående/Nästa
+- Bilens liv
+- Dokument
+- AI-mekaniker-demo
+- OKS195 och JXD416 fungerar
+- Ny cacheversion
 
-UPPDATERING PÅ GITHUB:
-Ladda upp samtliga filer och ersätt filer med samma namn.
+UPPDATERING:
+Ladda upp samtliga filer till GitHub och ersätt filer med samma namn.
