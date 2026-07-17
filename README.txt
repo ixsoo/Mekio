@@ -1,10 +1,18 @@
-MEKIO v4C
+MEKIO v4D
 
 NYTT:
-- Egna mappar för Besiktningsprotokoll, Kvitton och Garantier
-- Lägg till-knapp inne i varje mapp
-- Kameran eller filväljaren öppnas därifrån
-- Ficklampsknapp testar riktig torch via bakre kameran
-- Om iPhone blockerar torch visas tydligt besked
+- Första kompletta steg-för-steg-guiden: motoroljebyte på Volvo 240
+- Tydlig förloppsindikator och stora Föregående/Nästa-knappar
+- Sista steget öppnar en riktig avslutningsruta
+- Spara datum, mätarställning, anteckning och valfri bild i Bilens liv
+- Manuell servicepost fungerar
+- Dokumentmappar, filuppladdning och räknare fungerar
+- Förbättrad lagring lokalt på telefonen
+- Uppdaterad PWA-cache till v4D
 
-Ladda upp samtliga filer till GitHub och ersätt filerna med samma namn.
+GITHUB:
+Ladda upp samtliga filer och ersätt filerna med samma namn.
+Om den gamla versionen visas, uppdatera sidan eller ta bort appen från hemskärmen och lägg till den igen.
+
+OBS:
+Registreringsnummersökningen är fortfarande en demo med OKS195 och JXD416. Riktig fordonsdata kräver ett externt API.
